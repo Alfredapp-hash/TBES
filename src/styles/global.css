@@ -164,6 +164,15 @@ h3 {
   color: #6eb6ff;
 }
 
+.logo-abbr {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: #9ad7ff;
+  align-self: center;
+}
+
 .nav {
   display: flex;
   align-items: center;
