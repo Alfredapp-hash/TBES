@@ -1,0 +1,54 @@
+export const company = {
+  name: "TurbineBridge Energy Solutions LLC",
+  short: "TurbineBridge",
+  tagline: "Bridging power to possibilities",
+  descriptor: "Industry connections to secure turbines, and the teams that bring them into top shape.",
+};
+
+export const nav = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/solutions", label: "Solutions" },
+  { href: "/equipment", label: "Equipment" },
+  { href: "/markets", label: "Markets" },
+  { href: "/partners", label: "Partner" },
+  { href: "/contact", label: "Contact" },
+] as const;
+
+export const mailing = {
+  line1: "525 Randall Ave Ste 100",
+  line2: "PMB 1477",
+  line3: "Cheyenne, WY 82001",
+};
+
+export const leaders = [
+  {
+    name: "Tracy Springford",
+    role: "CEO",
+    phone: "",
+    tel: "",
+  },
+  {
+    name: "Brian Salsbury",
+    role: "CCO",
+    phone: "(951) 228-8940",
+    tel: "+19512288940",
+  },
+  {
+    name: "Craig Springfrod",
+    role: "Director of Business Development",
+    phone: "(618) 979-8034",
+    tel: "+16189798034",
+  },
+] as const;
+
+export const interests = [
+  "Sourcing a turbine or generator",
+  "Technical verification",
+  "Transaction support",
+  "Service and rehab",
+  "Supplying equipment",
+  "Partnership",
+  "Client portal access",
+  "Something else",
+] as const;

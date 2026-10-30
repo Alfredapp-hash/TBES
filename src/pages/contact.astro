@@ -1,0 +1,54 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import InquiryForm from "../components/InquiryForm.astro";
+import { leaders, mailing } from "../data/site";
+---
+
+<Base
+  title="Contact"
+  description="Tell TurbineBridge whether you need a turbine secured, a machine rehabbed, or both."
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Secure it, rehab it, or both."
+    lede="Name the machine class or the load, and say whether you need it secured, rehabbed, or both. Add timing, and a location only if you want us to have it."
+  />
+
+  <section class="section">
+    <div class="section-inner split">
+      <InquiryForm formName="contact" submitLabel="Send inquiry" />
+      <aside class="stack">
+        <article class="card">
+          <h2>Mailing address</h2>
+          <p>
+            {mailing.line1}<br />
+            {mailing.line2}<br />
+            {mailing.line3}
+          </p>
+        </article>
+        {leaders.map((person) => (
+          <article class="card">
+            <p class="eyebrow">{person.role}</p>
+            <h3>{person.name}</h3>
+            {person.phone ? <p><a class="link" href={`tel:${person.tel}`}>{person.phone}</a></p> : null}
+          </article>
+        ))}
+      </aside>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="section-inner">
+      <article class="card">
+        <h2>What happens next</h2>
+        <p>
+          We read the note and answer with the right next step. That step may be a question, a check on equipment, or a narrower scope for the work.
+        </p>
+        <p>
+          Documents and status for an active engagement belong in the <a class="link" href="/portal">client portal</a> once that room is open. What this form collects is described on the <a class="link" href="/privacy">privacy page</a>.
+        </p>
+      </article>
+    </div>
+  </section>
+</Base>

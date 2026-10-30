@@ -1,0 +1,33 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import InquiryForm from "../components/InquiryForm.astro";
+---
+
+<Base
+  title="Client portal"
+  description="The client portal is not open yet, and this page only takes a request for access to a live engagement."
+>
+  <PageHero
+    eyebrow="Client portal"
+    title="A secure room for live transactions."
+    lede="The portal is not open yet. When it opens, it is meant to hold documents, equipment status, and milestone tracking for active engagements."
+  />
+
+  <section class="section">
+    <div class="section-inner prose">
+      <p>This page has no sign-in. Access, when the portal opens, is for people already in an engagement.</p>
+      <p>Send a request if you want to be included. Name the engagement if you have one.</p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="section-inner">
+      <InquiryForm
+        formName="portal"
+        defaultInterest="Client portal access"
+        submitLabel="Request access"
+      />
+    </div>
+  </section>
+</Base>

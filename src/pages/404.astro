@@ -1,0 +1,27 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+---
+
+<Base
+  title="Page not found"
+  description="That address is not a page on the TurbineBridge site."
+>
+  <PageHero
+    eyebrow="Not found"
+    title="That page is not on this site."
+    lede="The address does not match a page we publish."
+  />
+
+  <section class="section">
+    <div class="section-inner">
+      <p>
+        <a class="link" href="/">Home</a>
+        ·
+        <a class="link" href="/equipment">Equipment</a>
+        ·
+        <a class="link" href="/contact">Contact</a>
+      </p>
+    </div>
+  </section>
+</Base>

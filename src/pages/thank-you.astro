@@ -1,0 +1,38 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+---
+
+<Base
+  title="Inquiry received"
+  description="TurbineBridge has your inquiry and will reply with the right next step."
+>
+  <PageHero
+    eyebrow="Received"
+    title="Your inquiry is in."
+    lede="We read every note and reply with the right next step."
+  />
+
+  <section class="section">
+    <div class="section-inner stack">
+      <p id="preview-note" class="measure" hidden>
+        This preview did not deliver the inquiry to a live desk. On the published site, the same form is collected for follow-up.
+      </p>
+      <p>
+        <a class="link" href="/">Home</a>
+        ·
+        <a class="link" href="/equipment">Equipment</a>
+      </p>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get("preview") === "1") {
+        var note = document.getElementById("preview-note");
+        if (note) note.hidden = false;
+      }
+    })();
+  </script>
+</Base>

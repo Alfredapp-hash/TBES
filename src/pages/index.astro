@@ -1,0 +1,236 @@
+---
+import Base from "../layouts/Base.astro";
+import { listings } from "../data/inventory";
+
+const featuredIds = ["TB-S01", "TB-S05", "TB-S03"];
+const featured = featuredIds.flatMap((id) => {
+  const item = listings.find((listing) => listing.id === id);
+  return item ? [item] : [];
+});
+
+const solutions = [
+  {
+    title: "Secure the turbine",
+    text: "Industry-wide connections to find and secure gas turbines and generators that fit the load.",
+  },
+  {
+    title: "Verify the machine",
+    text: "A check of condition and records before a buyer relies on what a seller wrote down.",
+  },
+  {
+    title: "Connect the right team",
+    text: "The customer is matched with the people who service and rehab that class of equipment.",
+  },
+  {
+    title: "Bring it to top shape",
+    text: "The rehab path is aimed at a machine ready for the duty, not a unit that is only delivered.",
+  },
+];
+
+const markets = [
+  { title: "Data centers", text: "Firm power for halls that cannot wait on a slow interconnect." },
+  { title: "Industrial", text: "Generation for plants where an outage stops the line." },
+  { title: "Utilities", text: "Blocks of capacity for utilities and independent power producers." },
+  { title: "Mission-critical", text: "Government and other loads where resilience is the requirement." },
+];
+
+const values = [
+  ["Integrity", "Say what the asset is, including what it is not."],
+  ["Reliability", "Treat schedule and performance as part of the product."],
+  ["Technical excellence", "Check the machine before anyone relies on it."],
+  ["Customer focus", "Stay from the first specification through operation."],
+  ["Sustainability", "Prefer efficient, right-sized generation over wasted capacity."],
+  ["Long-term partnerships", "Judge the work by the next engagement, not only the first purchase."],
+];
+---
+
+<Base
+  title="TurbineBridge Energy Solutions · Bridging power to possibilities"
+  description="TurbineBridge uses industry-wide connections to secure turbines and connects customers with the teams that service and rehab them into top shape."
+>
+  <section class="hero-stage" aria-label="TurbineBridge">
+    <img
+      class="hero-plate"
+      src="/hero.jpg"
+      alt="Industrial gas turbine at sunrise beside a row of blue-lit data center racks"
+    />
+    <canvas class="energy-bridge" data-energy-bridge aria-hidden="true"></canvas>
+    <div class="hero-shade"></div>
+    <div class="hero-copy">
+      <h1>
+        <span class="wordmark">Turbine<em>Bridge</em></span>
+        <span class="legal">Energy Solutions LLC</span>
+        <span class="tagline">Bridging power to possibilities</span>
+      </h1>
+      <p class="lede">Industry-wide connections to secure turbines, and the right teams to service and rehab them into top shape.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/solutions">Our solutions</a>
+        <a class="btn btn-ghost" href="/contact">Contact us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-label="How an engagement moves">
+    <ol class="band-list">
+      <li>
+        <span>01</span>
+        <strong>Secure the turbine</strong>
+        <em>Use industry connections to get the machine.</em>
+      </li>
+      <li>
+        <span>02</span>
+        <strong>Match the team</strong>
+        <em>The people who service and rehab that equipment.</em>
+      </li>
+      <li>
+        <span>03</span>
+        <strong>Rehab the unit</strong>
+        <em>The work that brings condition up to the duty.</em>
+      </li>
+      <li>
+        <span>04</span>
+        <strong>Leave it in top shape</strong>
+        <em>Ready for the site that has to run it.</em>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="block-title">
+        <p class="eyebrow">Start here</p>
+        <h2>Two ways in.</h2>
+      </div>
+      <div class="grid-2">
+        <a class="door card" href={`/contact?interest=${encodeURIComponent("Sourcing a turbine or generator")}`}>
+          <p class="eyebrow">Need power</p>
+          <h2>Secure a turbine</h2>
+          <p>Tell us the load and the timing. We use industry connections to secure the machine, then match the team that can rehab it.</p>
+          <span class="link">Start an inquiry</span>
+        </a>
+        <a class="door card" href={`/contact?interest=${encodeURIComponent("Service and rehab")}`}>
+          <p class="eyebrow">You do the work</p>
+          <h2>Rehab the equipment</h2>
+          <p>If your team services or rehabs turbines and generators, tell us the classes you handle. We connect you with the customer who needs that work.</p>
+          <span class="link">Join the network</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="section-inner split">
+      <div class="stack">
+        <p class="eyebrow">Executive summary</p>
+        <h2>Secure the turbine. Then put the right team on it.</h2>
+        <p class="measure">
+          TurbineBridge Energy Solutions LLC uses industry-wide connections to secure gas turbines and generators. The buyers are data centers, mission-critical facilities, and industrial operators.
+        </p>
+        <p class="measure">
+          Securing the machine is only half the job. We connect the customer with the proper teams to service and rehab that equipment and bring it into top shape.
+        </p>
+        <p><a class="link" href="/about">Read the company story</a></p>
+      </div>
+      <div class="stack">
+        <article class="card">
+          <h3>Mission</h3>
+          <p>Connect high-quality turbine and power assets with operators who need reliable, scalable energy for critical infrastructure and economic growth.</p>
+        </article>
+        <article class="card">
+          <h3>Vision</h3>
+          <p>Be the trusted global partner for turbine and power solutions behind the next generation of data centers and mission-critical infrastructure.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="block-title">
+        <p class="eyebrow">Solutions</p>
+        <h2>From a secured machine to one in top shape.</h2>
+        <p class="measure">We secure the turbine through industry connections, then match the customer with the team that can service and rehab it.</p>
+      </div>
+      <div class="grid-4">
+        {solutions.map((item) => (
+          <article class="card">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <p class="more"><a class="link" href="/solutions">See how an engagement moves</a></p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="section-inner">
+      <div class="block-title">
+        <p class="eyebrow">Markets</p>
+        <h2>Where the power has to show up.</h2>
+      </div>
+      <div class="grid-4">
+        {markets.map((item) => (
+          <article class="card">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <p class="more"><a class="link" href="/markets">Markets in detail</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="block-title">
+        <p class="eyebrow">Equipment</p>
+        <h2>Sample configurations.</h2>
+        <p class="measure">These cards show how a listing will read. They are not machines currently offered for sale. Availability is confirmed only after an inquiry.</p>
+      </div>
+      <div class="grid-3">
+        {featured.map((item) => (
+          <article class="listing-card">
+            <p class="listing-id">{item.id}</p>
+            <p class="listing-flag">Sample listing</p>
+            <h3>{item.name}</h3>
+            <p class="spec-row">{item.outputLabel} · {item.condition} · {item.type}</p>
+            <p>{item.summary}</p>
+            <a class="link" href={`/contact?interest=${encodeURIComponent("Sourcing a turbine or generator")}&listing=${item.id}`}>Ask about this configuration</a>
+          </article>
+        ))}
+      </div>
+      <p class="more"><a class="link" href="/equipment">Filter the sample catalog</a></p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="section-inner">
+      <div class="block-title">
+        <p class="eyebrow">Core values</p>
+        <h2>How the work is judged.</h2>
+      </div>
+      <div class="grid-3">
+        {values.map(([title, text]) => (
+          <article class="card">
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="cta-inner">
+      <p class="eyebrow on-dark">Start a conversation</p>
+      <h2>Tell us the machine, and whether it needs to be secured, rehabbed, or both.</h2>
+      <p>Buyers, suppliers, and service teams use the same desk. If you hold equipment or you rehab it, say so. If you need power, say what the site has to carry.</p>
+      <a class="btn btn-primary" href="/contact">Contact us</a>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import "../scripts/energy-bridge.ts";
+</script>

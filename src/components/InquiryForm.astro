@@ -1,0 +1,127 @@
+---
+import { interests } from "../data/site";
+
+interface Props {
+  formName: "contact" | "partner" | "portal";
+  submitLabel?: string;
+  defaultInterest?: string;
+}
+
+const { formName, submitLabel = "Send inquiry", defaultInterest = "" } = Astro.props;
+---
+
+<form
+  class="inquiry"
+  name={formName}
+  method="POST"
+  action="/thank-you"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  data-inquiry
+>
+  <input type="hidden" name="form-name" value={formName} />
+  <p class="hp" aria-hidden="true">
+    <label>
+      Leave this empty
+      <input name="bot-field" tabindex="-1" autocomplete="off" />
+    </label>
+  </p>
+  <div class="form-grid">
+    <label class="field">
+      <span>Name</span>
+      <input name="name" type="text" autocomplete="name" required />
+    </label>
+    <label class="field">
+      <span>Company</span>
+      <input name="company" type="text" autocomplete="organization" />
+    </label>
+    <label class="field">
+      <span>Email</span>
+      <input name="email" type="email" autocomplete="email" required />
+    </label>
+    <label class="field">
+      <span>Phone <span class="optional">(optional)</span></span>
+      <input name="phone" type="tel" autocomplete="tel" />
+    </label>
+    <label class="field field-span">
+      <span>Interest</span>
+      <select name="interest" required data-interest>
+        <option value="" disabled selected={defaultInterest === ""}>Select one</option>
+        {interests.map((item) => (
+          <option value={item} selected={item === defaultInterest}>{item}</option>
+        ))}
+      </select>
+    </label>
+    <label class="field field-span">
+      <span>Message</span>
+      <textarea name="message" required data-message rows="6"></textarea>
+    </label>
+  </div>
+  <p class="form-note">Name, email, interest, and message are required. We use this note to reply. We do not sell inquiries. <a class="link" href="/privacy">Privacy</a></p>
+  <p class="form-error" data-form-error hidden>The inquiry did not send. Check the required fields and try again.</p>
+  <button class="btn btn-primary" type="submit">{submitLabel}</button>
+</form>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const interest = params.get("interest");
+  const listing = params.get("listing");
+
+  document.querySelectorAll("[data-interest]").forEach((select) => {
+    if (!(select instanceof HTMLSelectElement) || !interest) return;
+    const match = Array.from(select.options).some((option) => option.value === interest);
+    if (match) select.value = interest;
+  });
+
+  document.querySelectorAll("[data-message]").forEach((field) => {
+    if (!(field instanceof HTMLTextAreaElement) || !listing || field.value) return;
+    field.value = `Please contact me about sample listing ${listing}.`;
+  });
+
+  document.querySelectorAll("[data-inquiry]").forEach((form) => {
+    if (!(form instanceof HTMLFormElement)) return;
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const bot = String(data.get("bot-field") || "").trim();
+      if (bot) {
+        window.location.href = "/thank-you";
+        return;
+      }
+
+      const body = new URLSearchParams();
+      data.forEach((value, key) => {
+        body.append(key, String(value));
+      });
+
+      const button = form.querySelector("button");
+      if (button instanceof HTMLButtonElement) button.disabled = true;
+
+      const local = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+      try {
+        const response = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: body.toString(),
+        });
+        if (local) {
+          window.location.href = "/thank-you?preview=1";
+          return;
+        }
+        if (response.ok) {
+          window.location.href = "/thank-you";
+          return;
+        }
+      } catch {
+        if (local) {
+          window.location.href = "/thank-you?preview=1";
+          return;
+        }
+      }
+
+      if (button instanceof HTMLButtonElement) button.disabled = false;
+      const error = form.querySelector("[data-form-error]");
+      if (error instanceof HTMLElement) error.hidden = false;
+    });
+  });
+</script>

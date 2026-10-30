@@ -1,0 +1,178 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { leaders } from "../data/site";
+---
+
+<Base
+  title="About"
+  description="TurbineBridge uses industry-wide connections to secure turbines and connects customers with the teams that service and rehab them."
+>
+  <PageHero
+    eyebrow="The company"
+    title="The gap between a proven turbine and a site that needs power."
+    lede="Industry-wide connections to secure turbines, and the right teams to service and rehab them into top shape."
+  />
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="block-title">
+        <p class="eyebrow">Story</p>
+        <h2>A buyer, a machine, and the work between them</h2>
+      </div>
+      <div class="prose">
+        <p>
+          A proven turbine and a site that needs power often sit with different owners. TurbineBridge stands in that gap with industry-wide connections. Those connections are how we secure gas turbines and generators for the customer.
+        </p>
+        <p>
+          Securing the machine is not the end of the work. We connect the customer with the proper teams to service and rehab that equipment and bring it into top shape. The shops do the rehab. TurbineBridge’s job is to put the right people on the right machine and stay with that path.
+        </p>
+        <p>
+          The customers are data centers, mission-critical facilities, industrial plants, utilities, and independent power producers.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="section-inner">
+      <div class="block-title">
+        <p class="eyebrow">The desk</p>
+        <h2>Who you reach.</h2>
+      </div>
+      <div class="grid-2">
+        {leaders.map((person) => (
+          <article class="card">
+            <p class="eyebrow">{person.role}</p>
+            <h3>{person.name}</h3>
+            {person.phone ? <p><a class="link" href={`tel:${person.tel}`}>{person.phone}</a></p> : null}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="block-title">
+        <p class="eyebrow">Purpose</p>
+        <h2>Mission and vision</h2>
+      </div>
+      <div class="grid-2">
+        <article class="card">
+          <p class="eyebrow">Mission</p>
+          <h3>Connect the asset with the need</h3>
+          <p>
+            Connect high-quality turbine and power assets with customers who need reliable, scalable energy. That is how the company supports critical infrastructure and economic growth.
+          </p>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Vision</p>
+          <h3>The partner we intend to become</h3>
+          <p>
+            Be the trusted global partner for turbine and power solutions that fuel the next generation of data centers and mission-critical infrastructure.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="section-inner">
+      <div class="block-title">
+        <p class="eyebrow">How the work is paid for</p>
+        <h2>Engagement structures</h2>
+        <p class="measure">These are the ways TurbineBridge expects to be paid.</p>
+      </div>
+      <div class="stack">
+        <ul class="check-list">
+          <li>Equipment sales and brokerage fees</li>
+          <li>Procurement and transaction management fees</li>
+          <li>Advisory and consulting services</li>
+          <li>Long-term service and support partnerships</li>
+          <li>Potential equity participation in select projects</li>
+        </ul>
+        <p class="measure">
+          Nothing on this site is an offer to sell a security. Any participation structure is discussed directly with the company.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="block-title">
+        <p class="eyebrow">From here</p>
+        <h2>The plan from here</h2>
+        <p class="measure">This is the plan from here, written as work ahead rather than as history.</p>
+      </div>
+      <div class="timeline">
+        <article class="timeline-item">
+          <h3>1. Keep the network in working order</h3>
+          <p>The connections that secure turbines and reach rehab teams are already the core of the work. The plan is to keep that network sharp and add to it.</p>
+        </article>
+        <article class="timeline-item">
+          <h3>2. Execute initial turbine transactions</h3>
+          <p>The next work is to complete the first purchases and sales, and to learn the real friction in each one.</p>
+        </article>
+        <article class="timeline-item">
+          <h3>3. Deepen the service relationships</h3>
+          <p>Stay close to the teams that rehab equipment, so the match between a machine and a shop gets faster and more reliable.</p>
+        </article>
+        <article class="timeline-item">
+          <h3>4. Expand into turnkey power solutions</h3>
+          <p>
+            Widen the offer from the machine itself to a fuller power solution for the site. That step comes after the earlier ones. It does not make TurbineBridge the engineer of record.
+          </p>
+        </article>
+        <article class="timeline-item">
+          <h3>5. Scale globally with a trusted reputation</h3>
+          <p>Take the same standard of work to more places once finished transactions have earned the trust to do it.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="section-inner">
+      <div class="block-title">
+        <p class="eyebrow">Values</p>
+        <h2>What we will be held to</h2>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <h3>Integrity</h3>
+          <p>We state the facts of the machine and the deal, including what we do not yet know.</p>
+        </article>
+        <article class="card">
+          <h3>Reliability</h3>
+          <p>The load depends on equipment and commitments that hold up after the conversation ends.</p>
+        </article>
+        <article class="card">
+          <h3>Technical Excellence</h3>
+          <p>We treat condition, records, and fit for the duty as things to verify, not as claims to repeat.</p>
+        </article>
+        <article class="card">
+          <h3>Customer Focus</h3>
+          <p>The customer's load, site, and timing set the order of the work.</p>
+        </article>
+        <article class="card">
+          <h3>Sustainability</h3>
+          <p>When we compare options, we account for fuel use, equipment life, and waste.</p>
+        </article>
+        <article class="card">
+          <h3>Long-Term Partnerships</h3>
+          <p>We intend to remain available after delivery for service and support through the life of the asset.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="cta-inner">
+      <h2>Bring the site into the conversation.</h2>
+      <p>A machine class or a load is enough to begin. We read every note and reply with the right next step.</p>
+      <a class="btn btn-primary" href="/contact">Send an inquiry</a>
+    </div>
+  </section>
+</Base>

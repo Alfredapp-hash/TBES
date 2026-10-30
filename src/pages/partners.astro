@@ -1,0 +1,62 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import InquiryForm from "../components/InquiryForm.astro";
+---
+
+<Base
+  title="Partner with us"
+  description="Suppliers, buyers, and the teams that service and rehab turbines can reach TurbineBridge from this page."
+>
+  <PageHero
+    eyebrow="Partners"
+    title="The connections that secure a turbine and rehab it."
+    lede="Suppliers who hold equipment, customers who need it, and the teams that service and rehab it into top shape."
+  />
+
+  <section class="section">
+    <div class="section-inner stack">
+      <div class="grid-3">
+        <article class="card">
+          <h2>Suppliers</h2>
+          <p>
+            You hold a gas turbine, a generator, or related power equipment. Tell us the machine, the condition as you know it, and whether it can be offered now.
+          </p>
+        </article>
+        <article class="card">
+          <h2>Buyers</h2>
+          <p>
+            You need a turbine or generator for a data center, a plant, a utility project, or a mission-critical site. Tell us the machine class or the load, whether you want new or refurbished equipment, and the timing.
+          </p>
+        </article>
+        <article class="card">
+          <h2>Service and rehab teams</h2>
+          <p>
+            You service or rehab gas turbines and generators. Tell us the classes you work on. We connect customers with the proper team so the equipment can be brought into top shape.
+          </p>
+          <p>
+            Longer partnerships, including a participation structure on select projects, are discussed directly with the company. Read the <a class="link" href="#participation-caution">caution below</a>.
+          </p>
+        </article>
+      </div>
+      <p class="measure" id="participation-caution">
+        Nothing on this site is an offer to sell a security. Any participation structure is discussed directly with the company.
+      </p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="section-inner stack">
+      <p>
+        Suppliers who want to list equipment can <a class="link" href="#partner-inquiry">send it with this form</a>.
+      </p>
+      <div id="partner-inquiry">
+        <InquiryForm
+          formName="partner"
+          defaultInterest="Partnership"
+          submitLabel="Send partnership note"
+        />
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,21 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import EquipmentBrowser from "../components/EquipmentBrowser";
+---
+
+<Base
+  title="Equipment"
+  description="Sample turbine and generator configurations from TurbineBridge. Filter by type, condition, application, and output. These are examples, not a live offer."
+>
+  <PageHero
+    eyebrow="Equipment"
+    title="Sample configurations, not a live yard."
+    lede="Filter the examples the way a buyer will filter a real book: type, condition, application, and output. Nothing here is an offer of a specific machine."
+  />
+  <section class="section">
+    <div class="section-inner">
+      <EquipmentBrowser client:load />
+    </div>
+  </section>
+</Base>

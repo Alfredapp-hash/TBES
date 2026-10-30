@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>TurbineBridge business cards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600&family=IBM+Plex+Mono:wght@500&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @page {
+        size: 3.75in 2.25in;
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        background: #5c6e80;
+      }
+
+      .sheet {
+        width: 3.75in;
+        height: 2.25in;
+        position: relative;
+        overflow: hidden;
+        break-after: page;
+        page-break-after: always;
+      }
+
+      .sheet:last-child {
+        break-after: auto;
+        page-break-after: auto;
+      }
+
+      .front {
+        background: #f7fafc;
+        color: #12263a;
+        font-family: "Figtree", "Avenir Next", sans-serif;
+      }
+
+      .mast {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 0.78in;
+        background: #071421;
+        color: #f7fbff;
+        display: flex;
+        align-items: flex-end;
+        gap: 0.1in;
+        padding: 0 0.28in 0.12in;
+      }
+
+      .mark {
+        width: 0.34in;
+        height: 0.34in;
+        flex: none;
+        margin-bottom: 0.02in;
+      }
+
+      .brand {
+        display: grid;
+        gap: 0.03in;
+      }
+
+      .word {
+        font-family: "Syne", "Avenir Next", sans-serif;
+        font-weight: 800;
+        font-size: 15.5pt;
+        letter-spacing: -0.04em;
+        line-height: 0.9;
+      }
+
+      .word em {
+        font-style: normal;
+        color: #4da3ff;
+      }
+
+      .legal {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 6.2pt;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #c5d6e4;
+      }
+
+      .flow {
+        position: absolute;
+        top: 0.78in;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, #3ad4ff 18%, #3ee0a0 62%, #4d8dff, transparent);
+      }
+
+      .body {
+        position: absolute;
+        left: 0.28in;
+        right: 0.24in;
+        top: 0.96in;
+        display: grid;
+        gap: 0.045in;
+      }
+
+      .name {
+        margin: 0;
+        font-family: "Syne", "Avenir Next", sans-serif;
+        font-weight: 700;
+        font-size: 15pt;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        color: #102033;
+      }
+
+      .role {
+        margin: 0;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 6.6pt;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        line-height: 1.25;
+        color: #1849b8;
+      }
+
+      .phone,
+      .address {
+        margin: 0.04in 0 0;
+        font-size: 8.4pt;
+        line-height: 1.25;
+        font-weight: 600;
+        color: #163044;
+      }
+
+      .address {
+        font-weight: 500;
+        color: #3d5366;
+      }
+
+      .back {
+        background: #071421;
+      }
+
+      .back img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 42%;
+      }
+
+      .shade {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(7, 20, 33, 0.94) 0%, rgba(7, 20, 33, 0.2) 42%, rgba(7, 20, 33, 0.18) 100%);
+      }
+
+      .back-lockup {
+        position: absolute;
+        left: 0.26in;
+        right: 0.26in;
+        bottom: 0.18in;
+        color: white;
+      }
+
+      .back .word {
+        font-size: 16pt;
+      }
+
+      .tag {
+        margin: 0.06in 0 0;
+        font-family: "Syne", "Avenir Next", sans-serif;
+        font-weight: 700;
+        font-size: 8pt;
+        letter-spacing: -0.02em;
+      }
+
+      .back .legal {
+        margin-top: 0.05in;
+        color: #d5e4ef;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="sheet front">
+      <header class="mast">
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="12" cy="16" r="6.2" fill="none" stroke="currentColor" stroke-width="1.7"></circle>
+          <circle cx="12" cy="16" r="1.25" fill="currentColor"></circle>
+          <path d="M17.2 13.2c3.6-3.4 7.4-3.1 10.2.4" fill="none" stroke="#6eb6ff" stroke-width="1.7" stroke-linecap="round"></path>
+          <path d="M24.2 18.4h4.6M24.2 21.2h4.6M24.2 24h4.6" stroke="#7dffa8" stroke-width="1.3" stroke-linecap="round"></path>
+        </svg>
+        <div class="brand">
+          <div class="word">Turbine<em>Bridge</em></div>
+          <div class="legal">Energy Solutions LLC</div>
+        </div>
+      </header>
+      <div class="flow"></div>
+      <div class="body">
+        <p class="name">Tracy Springford</p>
+        <p class="role">CEO</p>
+        <p class="address">
+          525 Randall Ave Ste 100<br />
+          PMB 1477<br />
+          Cheyenne, WY 82001
+        </p>
+      </div>
+    </section>
+
+    <section class="sheet back">
+      <img src="../../public/hero.jpg" alt="" />
+      <div class="shade"></div>
+      <div class="back-lockup">
+        <div class="word">Turbine<em>Bridge</em></div>
+        <p class="legal">Energy Solutions LLC</p>
+        <p class="tag">Secure the turbine. Rehab it into top shape.</p>
+      </div>
+    </section>
+
+    <section class="sheet front">
+      <header class="mast">
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="12" cy="16" r="6.2" fill="none" stroke="currentColor" stroke-width="1.7"></circle>
+          <circle cx="12" cy="16" r="1.25" fill="currentColor"></circle>
+          <path d="M17.2 13.2c3.6-3.4 7.4-3.1 10.2.4" fill="none" stroke="#6eb6ff" stroke-width="1.7" stroke-linecap="round"></path>
+          <path d="M24.2 18.4h4.6M24.2 21.2h4.6M24.2 24h4.6" stroke="#7dffa8" stroke-width="1.3" stroke-linecap="round"></path>
+        </svg>
+        <div class="brand">
+          <div class="word">Turbine<em>Bridge</em></div>
+          <div class="legal">Energy Solutions LLC</div>
+        </div>
+      </header>
+      <div class="flow"></div>
+      <div class="body">
+        <p class="name">Brian Salsbury</p>
+        <p class="role">CCO</p>
+        <p class="phone">(951) 228-8940</p>
+        <p class="address">
+          525 Randall Ave Ste 100<br />
+          PMB 1477<br />
+          Cheyenne, WY 82001
+        </p>
+      </div>
+    </section>
+
+    <section class="sheet back">
+      <img src="../../public/hero.jpg" alt="" />
+      <div class="shade"></div>
+      <div class="back-lockup">
+        <div class="word">Turbine<em>Bridge</em></div>
+        <p class="legal">Energy Solutions LLC</p>
+        <p class="tag">Secure the turbine. Rehab it into top shape.</p>
+      </div>
+    </section>
+
+    <section class="sheet front">
+      <header class="mast">
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="12" cy="16" r="6.2" fill="none" stroke="currentColor" stroke-width="1.7"></circle>
+          <circle cx="12" cy="16" r="1.25" fill="currentColor"></circle>
+          <path d="M17.2 13.2c3.6-3.4 7.4-3.1 10.2.4" fill="none" stroke="#6eb6ff" stroke-width="1.7" stroke-linecap="round"></path>
+          <path d="M24.2 18.4h4.6M24.2 21.2h4.6M24.2 24h4.6" stroke="#7dffa8" stroke-width="1.3" stroke-linecap="round"></path>
+        </svg>
+        <div class="brand">
+          <div class="word">Turbine<em>Bridge</em></div>
+          <div class="legal">Energy Solutions LLC</div>
+        </div>
+      </header>
+      <div class="flow"></div>
+      <div class="body">
+        <p class="name">Craig Springfrod</p>
+        <p class="role">Director of Business Development</p>
+        <p class="phone">(618) 979-8034</p>
+        <p class="address">
+          525 Randall Ave Ste 100<br />
+          PMB 1477<br />
+          Cheyenne, WY 82001
+        </p>
+      </div>
+    </section>
+
+    <section class="sheet back">
+      <img src="../../public/hero.jpg" alt="" />
+      <div class="shade"></div>
+      <div class="back-lockup">
+        <div class="word">Turbine<em>Bridge</em></div>
+        <p class="legal">Energy Solutions LLC</p>
+        <p class="tag">Secure the turbine. Rehab it into top shape.</p>
+      </div>
+    </section>
+  </body>
+</html>

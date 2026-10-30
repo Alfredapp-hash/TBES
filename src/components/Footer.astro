@@ -1,0 +1,30 @@
+---
+import { company, mailing, nav } from "../data/site";
+---
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="stack">
+      <p class="footer-brand">Turbine<em>Bridge</em></p>
+      <p>{company.name} uses industry-wide connections to secure turbines and to match customers with the teams that service and rehab them.</p>
+      <p>{mailing.line1}, {mailing.line2}<br />{mailing.line3}</p>
+    </div>
+    <div>
+      <h2>Explore</h2>
+      <ul class="footer-links">
+        {nav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <h2>Company</h2>
+      <ul class="footer-links">
+        <li><a href="/portal">Client portal</a></li>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/contact">Send an inquiry</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="legal-line">{company.descriptor}</p>
+</footer>
