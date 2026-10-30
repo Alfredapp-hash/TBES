@@ -30,8 +30,13 @@ import { leaders, mailing } from "../data/site";
         {leaders.map((person) => (
           <article class="card">
             <p class="eyebrow">{person.role}</p>
+            {"detail" in person && person.detail ? <p class="role-detail">{person.detail}</p> : null}
             <h3>{person.name}</h3>
-            {person.phone ? <p><a class="link" href={`tel:${person.tel}`}>{person.phone}</a></p> : null}
+            {person.phone ? (
+              <p><a class="link" href={`tel:${person.tel}`}>{person.phone}</a></p>
+            ) : (
+              <p><a class="link" href={`#inquiry`}>Use the form</a></p>
+            )}
           </article>
         ))}
       </aside>

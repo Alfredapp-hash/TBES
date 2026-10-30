@@ -44,8 +44,13 @@ import { leaders } from "../data/site";
         {leaders.map((person) => (
           <article class="card">
             <p class="eyebrow">{person.role}</p>
+            {"detail" in person && person.detail ? <p class="role-detail">{person.detail}</p> : null}
             <h3>{person.name}</h3>
-            {person.phone ? <p><a class="link" href={`tel:${person.tel}`}>{person.phone}</a></p> : null}
+            {person.phone ? (
+              <p><a class="link" href={`tel:${person.tel}`}>{person.phone}</a></p>
+            ) : (
+              <p><a class="link" href={`/contact?interest=${encodeURIComponent("Something else")}&who=${encodeURIComponent(person.name)}`}>Write {person.name.split(" ")[0]}</a></p>
+            )}
           </article>
         ))}
       </div>
@@ -61,16 +66,16 @@ import { leaders } from "../data/site";
       <div class="grid-2">
         <article class="card">
           <p class="eyebrow">Mission</p>
-          <h3>Connect the asset with the need</h3>
+          <h3>Find the unit. Make the introduction.</h3>
           <p>
-            Connect high-quality turbine and power assets with customers who need reliable, scalable energy. That is how the company supports critical infrastructure and economic growth.
+            Find a used turbine the load can use, in any class, and introduce the specialists who can bring it online.
           </p>
         </article>
         <article class="card">
           <p class="eyebrow">Vision</p>
-          <h3>The partner we intend to become</h3>
+          <h3>The desk for the wait, and for every other unit</h3>
           <p>
-            Be the trusted global partner for turbine and power solutions that fuel the next generation of data centers and mission-critical infrastructure.
+            Be the desk people call when a new system is years out, and when any used unit needs the right shop.
           </p>
         </article>
       </div>
@@ -103,8 +108,8 @@ import { leaders } from "../data/site";
     <div class="section-inner">
       <div class="block-title">
         <p class="eyebrow">From here</p>
-        <h2>The plan from here</h2>
-        <p class="measure">This is the plan from here, written as work ahead rather than as history.</p>
+        <h2>How the work grows</h2>
+        <p class="measure">Each engagement is a found unit and an introduction. The rest follows from doing that well.</p>
       </div>
       <div class="timeline">
         <article class="timeline-item">
@@ -112,22 +117,22 @@ import { leaders } from "../data/site";
           <p>The people we call already span three decades in the power industry. The plan is to keep those specialist relationships sharp, including the shops that handle control units.</p>
         </article>
         <article class="timeline-item">
-          <h3>2. Execute initial turbine transactions</h3>
-          <p>The next work is to complete the first purchases and sales, and to learn the real friction in each one.</p>
+          <h3>2. Find the unit, then make the introduction</h3>
+          <p>That pair of steps is the engagement. The class of machine can change. The job does not.</p>
         </article>
         <article class="timeline-item">
           <h3>3. Deepen the service relationships</h3>
           <p>Stay close to the shops that can bring a used turbine back online, so the introduction between a machine and a specialist gets faster.</p>
         </article>
         <article class="timeline-item">
-          <h3>4. Expand into turnkey power solutions</h3>
+          <h3>4. Wider site work comes after the machine</h3>
           <p>
-            Widen the offer from the machine itself to a fuller power solution for the site. That step comes after the earlier ones. It does not make TurbineBridge the engineer of record.
+            A fuller power solution for the site is later work. It does not make TurbineBridge the engineer of record.
           </p>
         </article>
         <article class="timeline-item">
-          <h3>5. Scale globally with a trusted reputation</h3>
-          <p>Take the same standard of work to more places once finished transactions have earned the trust to do it.</p>
+          <h3>5. Let finished work earn the next one</h3>
+          <p>The same standard goes further only after the units already handled have earned that trust.</p>
         </article>
       </div>
     </div>
@@ -142,27 +147,27 @@ import { leaders } from "../data/site";
       <div class="grid-3">
         <article class="card">
           <h3>Integrity</h3>
-          <p>We state the facts of the machine and the deal, including what we do not yet know.</p>
+          <p>The condition is stated as found, including what the record does not show.</p>
         </article>
         <article class="card">
           <h3>Reliability</h3>
-          <p>The load depends on equipment and commitments that hold up after the conversation ends.</p>
+          <p>The introduction still holds after the first call.</p>
         </article>
         <article class="card">
           <h3>Technical Excellence</h3>
-          <p>We treat condition, records, and fit for the duty as things to verify, not as claims to repeat.</p>
+          <p>The iron and the control unit each get a specialist who works that class.</p>
         </article>
         <article class="card">
           <h3>Customer Focus</h3>
-          <p>The customer's load, site, and timing set the order of the work.</p>
+          <p>The load, the site, and the date set the search.</p>
         </article>
         <article class="card">
           <h3>Sustainability</h3>
-          <p>When we compare options, we account for fuel use, equipment life, and waste.</p>
+          <p>A unit returned to service is preferred when it can do the duty.</p>
         </article>
         <article class="card">
           <h3>Long-Term Partnerships</h3>
-          <p>We intend to remain available after delivery for service and support through the life of the asset.</p>
+          <p>We stay in the middle until the unit can go online, and after that if you want us there.</p>
         </article>
       </div>
     </div>

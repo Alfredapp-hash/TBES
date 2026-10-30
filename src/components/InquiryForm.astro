@@ -12,6 +12,7 @@ const { formName, submitLabel = "Send inquiry", defaultInterest = "" } = Astro.p
 
 <form
   class="inquiry"
+  id="inquiry"
   name={formName}
   method="POST"
   action="/thank-you"
@@ -58,7 +59,7 @@ const { formName, submitLabel = "Send inquiry", defaultInterest = "" } = Astro.p
     </label>
   </div>
   <p class="form-note">Name, email, interest, and message are required. We use this note to reply. We do not sell inquiries. <a class="link" href="/privacy">Privacy</a></p>
-  <p class="form-error" data-form-error hidden>The inquiry did not send. Check the required fields and try again.</p>
+  <p class="form-error" data-form-error role="alert" hidden>The inquiry did not send. Check the required fields and try again.</p>
   <button class="btn btn-primary" type="submit">{submitLabel}</button>
 </form>
 
@@ -66,6 +67,7 @@ const { formName, submitLabel = "Send inquiry", defaultInterest = "" } = Astro.p
   const params = new URLSearchParams(window.location.search);
   const interest = params.get("interest");
   const listing = params.get("listing");
+  const who = params.get("who");
 
   document.querySelectorAll("[data-interest]").forEach((select) => {
     if (!(select instanceof HTMLSelectElement) || !interest) return;
@@ -74,8 +76,9 @@ const { formName, submitLabel = "Send inquiry", defaultInterest = "" } = Astro.p
   });
 
   document.querySelectorAll("[data-message]").forEach((field) => {
-    if (!(field instanceof HTMLTextAreaElement) || !listing || field.value) return;
-    field.value = `Please contact me about sample listing ${listing}.`;
+    if (!(field instanceof HTMLTextAreaElement) || field.value) return;
+    if (listing) field.value = `Please contact me about sample listing ${listing}.`;
+    else if (who) field.value = `Please have ${who} contact me.`;
   });
 
   document.querySelectorAll("[data-inquiry]").forEach((form) => {
@@ -95,7 +98,11 @@ const { formName, submitLabel = "Send inquiry", defaultInterest = "" } = Astro.p
       });
 
       const button = form.querySelector("button");
-      if (button instanceof HTMLButtonElement) button.disabled = true;
+      const label = button instanceof HTMLButtonElement ? button.textContent : "";
+      if (button instanceof HTMLButtonElement) {
+        button.disabled = true;
+        button.textContent = "Sending…";
+      }
 
       const local = ["localhost", "127.0.0.1"].includes(window.location.hostname);
       try {
@@ -119,7 +126,10 @@ const { formName, submitLabel = "Send inquiry", defaultInterest = "" } = Astro.p
         }
       }
 
-      if (button instanceof HTMLButtonElement) button.disabled = false;
+      if (button instanceof HTMLButtonElement) {
+        button.disabled = false;
+        button.textContent = label;
+      }
       const error = form.querySelector("[data-form-error]");
       if (error instanceof HTMLElement) error.hidden = false;
     });

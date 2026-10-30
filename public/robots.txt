@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://turbinebridge.netlify.app/sitemap-index.xml

@@ -29,19 +29,19 @@ const solutions = [
 ];
 
 const markets = [
-  { title: "Data centers", text: "Firm power for halls that cannot wait on a slow interconnect." },
-  { title: "Industrial", text: "Generation for plants where an outage stops the line." },
-  { title: "Utilities", text: "Blocks of capacity for utilities and independent power producers." },
-  { title: "Mission-critical", text: "Government and other loads where resilience is the requirement." },
+  { title: "Data centers", text: "Firm power when the hall is ready before the grid, including when a new large frame is years out." },
+  { title: "Industrial", text: "A used unit for a plant that stops when the power stops. Any class that can be brought back online." },
+  { title: "Utilities", text: "Capacity found as a used machine, then matched to the shops that can return it to service." },
+  { title: "Mission-critical", text: "Loads where the date power is online matters more than a place in a new-unit queue." },
 ];
 
 const values = [
-  ["Integrity", "Say what the asset is, including what it is not."],
-  ["Reliability", "Treat schedule and performance as part of the product."],
-  ["Technical excellence", "Check the machine before anyone relies on it."],
-  ["Customer focus", "Stay from the first specification through operation."],
-  ["Sustainability", "Prefer efficient, right-sized generation over wasted capacity."],
-  ["Long-term partnerships", "Judge the work by the next engagement, not only the first purchase."],
+  ["Integrity", "The condition is stated as found, including what the record does not show."],
+  ["Reliability", "The introduction still holds after the first call."],
+  ["Technical excellence", "The iron and the control unit each get a specialist who actually works that class."],
+  ["Customer focus", "The load, the site, and the date set the search."],
+  ["Sustainability", "A unit returned to service is preferred when it can do the duty."],
+  ["Long-term partnerships", "We stay in the middle until the unit can go online, and after that if you want us there."],
 ];
 ---
 
@@ -53,6 +53,8 @@ const values = [
     <img
       class="hero-plate"
       src="/hero.jpg"
+      width="1280"
+      height="720"
       alt="Industrial gas turbine at sunrise beside a row of blue-lit data center racks"
     />
     <canvas class="energy-bridge" data-energy-bridge aria-hidden="true"></canvas>
@@ -103,15 +105,15 @@ const values = [
         <h2>Two ways in.</h2>
       </div>
       <div class="grid-2">
-        <a class="door card" href={`/contact?interest=${encodeURIComponent("Sourcing a turbine or generator")}`}>
+        <a class="door card" href={`/contact?interest=${encodeURIComponent("I need a turbine")}`}>
           <p class="eyebrow">Need power</p>
-          <h2>Find a turbine</h2>
+          <h3>Find a turbine</h3>
           <p>Tell us the load and the timing. Any class. We find a used unit that specialists can bring back online, then make the introduction.</p>
           <span class="link">Start an inquiry</span>
         </a>
-        <a class="door card" href={`/contact?interest=${encodeURIComponent("Service and rehab")}`}>
+        <a class="door card" href={`/contact?interest=${encodeURIComponent("I repair turbines or control units")}`}>
           <p class="eyebrow">You do the work</p>
-          <h2>You do the repair</h2>
+          <h3>You do the repair</h3>
           <p>If your shop repairs gas turbines, or the control units that run them, tell us the classes you handle. We connect you with the customer who has the machine.</p>
           <span class="link">Join the network</span>
         </a>
@@ -129,8 +131,13 @@ const values = [
         {leaders.map((person) => (
           <article class="card">
             <p class="eyebrow">{person.role}</p>
+            {"detail" in person && person.detail ? <p class="role-detail">{person.detail}</p> : null}
             <h3>{person.name}</h3>
-            {person.phone ? <p><a class="link" href={`tel:${person.tel}`}>{person.phone}</a></p> : null}
+            {person.phone ? (
+              <p><a class="link" href={`tel:${person.tel}`}>{person.phone}</a></p>
+            ) : (
+              <p><a class="link" href={`/contact?interest=${encodeURIComponent("Something else")}&who=${encodeURIComponent(person.name)}`}>Write {person.name.split(" ")[0]}</a></p>
+            )}
           </article>
         ))}
       </div>
@@ -157,11 +164,11 @@ const values = [
       <div class="stack">
         <article class="card">
           <h3>Mission</h3>
-          <p>Connect high-quality turbine and power assets with operators who need reliable, scalable energy for critical infrastructure and economic growth.</p>
+          <p>Find a used turbine the load can use, in any class, and introduce the specialists who can bring it online.</p>
         </article>
         <article class="card">
           <h3>Vision</h3>
-          <p>Be the trusted global partner for turbine and power solutions behind the next generation of data centers and mission-critical infrastructure.</p>
+          <p>Be the desk people call when a new system is years out, and when any used unit needs the right shop.</p>
         </article>
       </div>
     </div>
@@ -219,7 +226,7 @@ const values = [
             <h3>{item.name}</h3>
             <p class="spec-row">{item.outputLabel} · {item.condition} · {item.type}</p>
             <p>{item.summary}</p>
-            <a class="link" href={`/contact?interest=${encodeURIComponent("Sourcing a turbine or generator")}&listing=${item.id}`}>Ask about this configuration</a>
+            <a class="link" href={`/contact?interest=${encodeURIComponent("I need a turbine")}&listing=${item.id}`}>Ask about this configuration</a>
           </article>
         ))}
       </div>

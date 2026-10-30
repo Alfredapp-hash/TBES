@@ -31,6 +31,7 @@ export const leaders = [
   {
     name: "Brian Salsbury",
     role: "CCO",
+    detail: "Chief Commercial Officer",
     phone: "(951) 228-8940",
     tel: "+19512288940",
   },
@@ -43,11 +44,11 @@ export const leaders = [
 ] as const;
 
 export const interests = [
-  "Sourcing a turbine or generator",
+  "I need a turbine",
+  "I have a used unit",
+  "I repair turbines or control units",
   "Technical verification",
   "Transaction support",
-  "Service and rehab",
-  "Supplying equipment",
   "Partnership",
   "Client portal access",
   "Something else",
