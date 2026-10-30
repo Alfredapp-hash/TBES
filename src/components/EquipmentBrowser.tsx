@@ -19,8 +19,8 @@ const MACHINE_OPTIONS: readonly MachineFilter[] = [
 ];
 const CONDITION_OPTIONS: readonly ConditionFilter[] = [
   "All",
-  "New",
-  "Refurbished",
+  "As found",
+  "Inspected",
 ];
 const APPLICATION_OPTIONS: readonly ApplicationFilter[] = [
   "All",

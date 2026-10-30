@@ -2,7 +2,7 @@ export const company = {
   name: "TurbineBridge Energy Solutions LLC",
   short: "TurbineBridge",
   tagline: "Bridging power to possibilities",
-  descriptor: "Industry connections to secure turbines, and the teams that bring them into top shape.",
+  descriptor: "We find the used gas turbine, then connect you with the specialists who bring it back online.",
 };
 
 export const nav = [

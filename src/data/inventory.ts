@@ -8,7 +8,7 @@ export type Application =
 
 export type MachineType = "Gas turbine" | "Generator";
 
-export type Condition = "New" | "Refurbished";
+export type Condition = "As found" | "Inspected";
 
 export type Listing = {
   id: string;
@@ -27,7 +27,7 @@ export const listings: Listing[] = [
     id: "TB-S01",
     name: "Aeroderivative gas turbine",
     type: "Gas turbine",
-    condition: "New",
+    condition: "As found",
     outputMw: 40,
     outputLabel: "40 MW class",
     applications: ["Data center", "Mission-critical"],
@@ -36,14 +36,14 @@ export const listings: Listing[] = [
     checks: [
       "Fast-start duty",
       "40 MW class output",
-      "New package",
+      "Used unit, condition as found",
     ],
   },
   {
     id: "TB-S02",
     name: "Industrial gas turbine",
     type: "Gas turbine",
-    condition: "New",
+    condition: "As found",
     outputMw: 15,
     outputLabel: "15 MW class",
     applications: ["Industrial", "Mission-critical"],
@@ -59,7 +59,7 @@ export const listings: Listing[] = [
     id: "TB-S03",
     name: "F-class gas turbine",
     type: "Gas turbine",
-    condition: "Refurbished",
+    condition: "Inspected",
     outputMw: 230,
     outputLabel: "230 MW class",
     applications: ["Utility"],
@@ -75,7 +75,7 @@ export const listings: Listing[] = [
     id: "TB-S04",
     name: "E-class gas turbine",
     type: "Gas turbine",
-    condition: "Refurbished",
+    condition: "Inspected",
     outputMw: 100,
     outputLabel: "100 MW class",
     applications: ["Utility", "Industrial"],
@@ -91,7 +91,7 @@ export const listings: Listing[] = [
     id: "TB-S05",
     name: "Continuous-duty gas generator",
     type: "Generator",
-    condition: "New",
+    condition: "As found",
     outputMw: 8,
     outputLabel: "8 MW class",
     applications: ["Data center"],
@@ -100,14 +100,14 @@ export const listings: Listing[] = [
     checks: [
       "8 MW class output",
       "Continuous-duty rating",
-      "New package for data center load",
+      "Used package, condition as found",
     ],
   },
   {
     id: "TB-S06",
     name: "Gas generator package",
     type: "Generator",
-    condition: "Refurbished",
+    condition: "Inspected",
     outputMw: 20,
     outputLabel: "20 MW class",
     applications: ["Data center", "Industrial"],
@@ -123,7 +123,7 @@ export const listings: Listing[] = [
     id: "TB-S07",
     name: "High-output generator package",
     type: "Generator",
-    condition: "New",
+    condition: "As found",
     outputMw: 50,
     outputLabel: "50 MW class",
     applications: ["Mission-critical", "Data center"],
@@ -131,7 +131,7 @@ export const listings: Listing[] = [
       "A high-output generator package in the 50 MW class for mission-critical and data center power.",
     checks: [
       "50 MW class output",
-      "New high-output package",
+      "Used package, condition as found",
       "For mission-critical and data center load",
     ],
   },
@@ -139,7 +139,7 @@ export const listings: Listing[] = [
     id: "TB-S08",
     name: "Utility generator",
     type: "Generator",
-    condition: "Refurbished",
+    condition: "Inspected",
     outputMw: 120,
     outputLabel: "120 MW class",
     applications: ["Utility"],

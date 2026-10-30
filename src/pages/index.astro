@@ -11,20 +11,20 @@ const featured = featuredIds.flatMap((id) => {
 
 const solutions = [
   {
-    title: "Secure the turbine",
-    text: "Industry-wide connections to find and secure gas turbines and generators that fit the load.",
+    title: "Find the turbine",
+    text: "A used gas turbine, in the condition it is in, if specialists can bring it back online.",
   },
   {
-    title: "Verify the machine",
-    text: "A check of condition and records before a buyer relies on what a seller wrote down.",
+    title: "Check the machine",
+    text: "Condition and records, before anyone treats a rough unit as a runner.",
   },
   {
-    title: "Connect the right team",
-    text: "The customer is matched with the people who service and rehab that class of equipment.",
+    title: "Connect the specialists",
+    text: "The right people for each part of the repair, including the control unit that starts, fuels, and protects the turbine.",
   },
   {
-    title: "Bring it to top shape",
-    text: "The rehab path is aimed at a machine ready for the duty, not a unit that is only delivered.",
+    title: "Put it online",
+    text: "The shops do that work. We stay in the middle until the unit can run.",
   },
 ];
 
@@ -47,7 +47,7 @@ const values = [
 
 <Base
   title="TurbineBridge Energy Solutions · Bridging power to possibilities"
-  description="TurbineBridge uses industry-wide connections to secure turbines and connects customers with the teams that service and rehab them into top shape."
+  description="TurbineBridge finds used gas turbines that can be brought back online, then connects you with the specialists who put them in shape to run."
 >
   <section class="hero-stage" aria-label="TurbineBridge">
     <img
@@ -63,7 +63,7 @@ const values = [
         <span class="legal">Energy Solutions LLC</span>
         <span class="tagline">Bridging power to possibilities</span>
       </h1>
-      <p class="lede">Industry-wide connections to secure turbines, and the right teams to service and rehab them into top shape.</p>
+      <p class="lede">If you need a gas turbine, we find a used one that can be brought back online, and we connect you with the specialists who put it in shape to run.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="/solutions">Our solutions</a>
         <a class="btn btn-ghost" href="/contact">Contact us</a>
@@ -75,23 +75,23 @@ const values = [
     <ol class="band-list">
       <li>
         <span>01</span>
-        <strong>Secure the turbine</strong>
-        <em>Use industry connections to get the machine.</em>
+        <strong>Find the turbine</strong>
+        <em>A used machine, if it can be brought back online.</em>
       </li>
       <li>
         <span>02</span>
-        <strong>Match the team</strong>
-        <em>The people who service and rehab that equipment.</em>
+        <strong>Name the specialists</strong>
+        <em>Every part of the repair, including the control unit.</em>
       </li>
       <li>
         <span>03</span>
-        <strong>Rehab the unit</strong>
-        <em>The work that brings condition up to the duty.</em>
+        <strong>They do the work</strong>
+        <em>The shops bring it back. We make the introduction.</em>
       </li>
       <li>
         <span>04</span>
-        <strong>Leave it in top shape</strong>
-        <em>Ready for the site that has to run it.</em>
+        <strong>Put it online</strong>
+        <em>Ready to run, without waiting out a new heavy-duty order.</em>
       </li>
     </ol>
   </section>
@@ -105,14 +105,14 @@ const values = [
       <div class="grid-2">
         <a class="door card" href={`/contact?interest=${encodeURIComponent("Sourcing a turbine or generator")}`}>
           <p class="eyebrow">Need power</p>
-          <h2>Secure a turbine</h2>
-          <p>Tell us the load and the timing. We use industry connections to secure the machine, then match the team that can rehab it.</p>
+          <h2>Find a turbine</h2>
+          <p>Tell us the load and the timing. We find a used gas turbine that specialists can bring back online, then make the introduction.</p>
           <span class="link">Start an inquiry</span>
         </a>
         <a class="door card" href={`/contact?interest=${encodeURIComponent("Service and rehab")}`}>
           <p class="eyebrow">You do the work</p>
-          <h2>Rehab the equipment</h2>
-          <p>If your team services or rehabs turbines and generators, tell us the classes you handle. We connect you with the customer who needs that work.</p>
+          <h2>You do the repair</h2>
+          <p>If your shop repairs gas turbines, or the control units that run them, tell us the classes you handle. We connect you with the customer who has the machine.</p>
           <span class="link">Join the network</span>
         </a>
       </div>
@@ -142,12 +142,15 @@ const values = [
     <div class="section-inner split">
       <div class="stack">
         <p class="eyebrow">Executive summary</p>
-        <h2>Secure the turbine. Then put the right team on it.</h2>
+        <h2>We find the turbine. Then we connect the specialists.</h2>
         <p class="measure">
-          TurbineBridge Energy Solutions LLC uses industry-wide connections to secure gas turbines and generators. The buyers are data centers, mission-critical facilities, and industrial operators.
+          That is the whole job. You need a gas turbine. We find a used one, in whatever condition it is in, as long as specialists can bring it back online. Then we introduce the people who do that work.
         </p>
         <p class="measure">
-          Securing the machine is only half the job. We connect the customer with the proper teams to service and rehab that equipment and bring it into top shape.
+          Those people cover the repair, including the control unit that starts, fuels, and protects the machine. The connections go back three decades in the power industry. The shops do the work. We are not the shop, and we are not the engineer of record.
+        </p>
+        <p class="measure">
+          A new heavy-duty gas turbine from GE is being reserved years out. Large frames ordered now are quoted around five years, with some slots already into the early 2030s. Smaller machines can be sooner. A used unit that can be returned to service is how a plant gets power without sitting in that queue.
         </p>
         <p><a class="link" href="/about">Read the company story</a></p>
       </div>
@@ -168,8 +171,8 @@ const values = [
     <div class="section-inner">
       <div class="block-title">
         <p class="eyebrow">Solutions</p>
-        <h2>From a secured machine to one in top shape.</h2>
-        <p class="measure">We secure the turbine through industry connections, then match the customer with the team that can service and rehab it.</p>
+        <h2>From a used machine to one that can run.</h2>
+        <p class="measure">We find the turbine. The specialists put it in shape to go online. We stay in the middle of that path.</p>
       </div>
       <div class="grid-4">
         {solutions.map((item) => (
@@ -206,7 +209,7 @@ const values = [
       <div class="block-title">
         <p class="eyebrow">Equipment</p>
         <h2>Sample configurations.</h2>
-        <p class="measure">These cards show how a listing will read. They are not machines currently offered for sale. Availability is confirmed only after an inquiry.</p>
+        <p class="measure">These cards show how a used machine will be described. They are not units currently offered. Availability is confirmed only after an inquiry.</p>
       </div>
       <div class="grid-3">
         {featured.map((item) => (
@@ -244,8 +247,8 @@ const values = [
   <section class="cta-band">
     <div class="cta-inner">
       <p class="eyebrow on-dark">Start a conversation</p>
-      <h2>Tell us the machine, and whether it needs to be secured, rehabbed, or both.</h2>
-      <p>Buyers, suppliers, and service teams use the same desk. If you hold equipment or you rehab it, say so. If you need power, say what the site has to carry.</p>
+      <h2>Need a turbine, or do you repair them?</h2>
+      <p>If you need power, tell us the load. If you hold a used machine, or you are the specialist who can bring one back online, say so. Same desk either way.</p>
       <a class="btn btn-primary" href="/contact">Contact us</a>
     </div>
   </section>
