@@ -3,7 +3,7 @@ export const company = {
   short: "TurbineBridge",
   abbr: "TBES",
   tagline: "Bridging power to possibilities",
-  descriptor: "We find used turbines of all kinds, then connect you with the specialists who bring them back online.",
+  descriptor: "We find the turbine. If you need assistance, we connect the specialists.",
 };
 
 export const nav = [
