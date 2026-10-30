@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import { listings } from "../data/inventory";
+import { leaders } from "../data/site";
 
 const featuredIds = ["TB-S01", "TB-S05", "TB-S03"];
 const featured = featuredIds.flatMap((id) => {
@@ -119,6 +120,25 @@ const values = [
   </section>
 
   <section class="section alt">
+    <div class="section-inner">
+      <div class="block-title">
+        <p class="eyebrow">The desk</p>
+        <h2>Who you reach.</h2>
+      </div>
+      <div class="grid-3">
+        {leaders.map((person) => (
+          <article class="card">
+            <p class="eyebrow">{person.role}</p>
+            <h3>{person.name}</h3>
+            {person.phone ? <p><a class="link" href={`tel:${person.tel}`}>{person.phone}</a></p> : null}
+          </article>
+        ))}
+      </div>
+      <p class="more"><a class="link" href="/contact">Write the desk</a></p>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="section-inner split">
       <div class="stack">
         <p class="eyebrow">Executive summary</p>
@@ -144,7 +164,7 @@ const values = [
     </div>
   </section>
 
-  <section class="section">
+  <section class="section alt">
     <div class="section-inner">
       <div class="block-title">
         <p class="eyebrow">Solutions</p>
@@ -163,7 +183,7 @@ const values = [
     </div>
   </section>
 
-  <section class="section alt">
+  <section class="section">
     <div class="section-inner">
       <div class="block-title">
         <p class="eyebrow">Markets</p>
@@ -181,7 +201,7 @@ const values = [
     </div>
   </section>
 
-  <section class="section">
+  <section class="section alt">
     <div class="section-inner">
       <div class="block-title">
         <p class="eyebrow">Equipment</p>
@@ -204,7 +224,7 @@ const values = [
     </div>
   </section>
 
-  <section class="section alt">
+  <section class="section">
     <div class="section-inner">
       <div class="block-title">
         <p class="eyebrow">Core values</p>
