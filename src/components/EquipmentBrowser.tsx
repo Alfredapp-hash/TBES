@@ -36,7 +36,7 @@ const OUTPUT_OPTIONS: readonly OutputFilter[] = [
   "Over 200 MW",
 ];
 
-const INTEREST = "I need a turbine";
+const INTEREST = "I want to buy a turbine";
 
 function matchesQuery(listing: Listing, query: string): boolean {
   const needle = query.trim().toLowerCase();

@@ -2,42 +2,30 @@
 import Base from "../layouts/Base.astro";
 import PageHero from "../components/PageHero.astro";
 import InquiryForm from "../components/InquiryForm.astro";
+import { reach } from "../data/site";
 ---
 
 <Base
   title="Partner with us"
-  description="Need a turbine, hold a used one, or repair them. TBES finds the unit and connects specialists if you need assistance."
+  description="Buy a turbine, sell one, or join the contractor network TBES recommends to bid the work."
 >
   <PageHero
     eyebrow="Partners"
-    title="We find the turbine."
-    lede="People who need a unit, people who hold a used one, and, when assistance is needed, the specialists who can put it in shape to run."
+    title="Buyers, sellers, and contractors."
+    lede="TBES sits in the middle. We find the turbine. When a customer needs work done, we recommend contractors from our network to bid it."
   />
 
   <section class="section">
     <div class="section-inner stack">
       <div class="grid-3">
-        <article class="card">
-          <h2>Suppliers</h2>
-          <p>
-            You hold a used gas turbine or generator. Condition can be rough. Tell us the machine, and whether specialists could still bring it back online.
-          </p>
-        </article>
-        <article class="card">
-          <h2>Buyers</h2>
-          <p>
-            You need a turbine for a plant, a data center, or another load. Any class. Tell us the duty and the timing. Some new systems are five years out. We find the used machine. If you need assistance, we connect the specialists.
-          </p>
-        </article>
-        <article class="card">
-          <h2>Service and rehab teams</h2>
-          <p>
-            You repair gas turbines, generators, or the control units that run them. Tell us the classes you work on. We introduce you to the customer who has the machine.
-          </p>
-          <p>
-            Longer partnerships, including a participation structure on select projects, are discussed directly with the company. Read the <a class="link" href="#participation-caution">caution below</a>.
-          </p>
-        </article>
+        {reach.map((item) => (
+          <a class="door card" href={`/contact?interest=${encodeURIComponent(item.interest)}`}>
+            <p class="eyebrow">{item.eyebrow}</p>
+            <h2>{item.title}</h2>
+            <p>{item.text}</p>
+            <span class="link">{item.cta}</span>
+          </a>
+        ))}
       </div>
       <p class="measure" id="participation-caution">
         Nothing on this site is an offer to sell a security. Any participation structure is discussed directly with the company.
@@ -48,12 +36,12 @@ import InquiryForm from "../components/InquiryForm.astro";
   <section class="section alt">
     <div class="section-inner stack">
       <p>
-        Suppliers who want to list equipment can <a class="link" href="#partner-inquiry">send it with this form</a>.
+        The links above open the desk with your reason already chosen. You can also <a class="link" href="#partner-inquiry">write it here</a>.
       </p>
       <div id="partner-inquiry">
         <InquiryForm
           formName="partner"
-          defaultInterest="Partnership"
+          defaultInterest="I want to sell a turbine"
           submitLabel="Send partnership note"
         />
       </div>

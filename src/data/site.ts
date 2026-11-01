@@ -3,7 +3,7 @@ export const company = {
   short: "TurbineBridge",
   abbr: "TBES",
   tagline: "Bridging power to possibilities",
-  descriptor: "We find the turbine. If you need assistance, we connect the specialists.",
+  descriptor: "TBES sits in the middle: buyers, sellers, and the contractors we recommend to bid the work.",
 };
 
 export const nav = [
@@ -44,13 +44,36 @@ export const leaders = [
   },
 ] as const;
 
+export const reach = [
+  {
+    interest: "I want to buy a turbine",
+    eyebrow: "Buy",
+    title: "Buy a turbine",
+    text: "Tell us the class and the timing. We look for a used unit that can be brought back online. Some new systems are five years out.",
+    cta: "Reach out to buy",
+  },
+  {
+    interest: "I want to sell a turbine",
+    eyebrow: "Sell",
+    title: "Sell a turbine",
+    text: "You hold a used unit. Condition can be rough, if it can still be brought back online. Tell us the machine and we take it to a buyer.",
+    cta: "Reach out to sell",
+  },
+  {
+    interest: "I want to join the contractor network",
+    eyebrow: "Contractors",
+    title: "Join the network",
+    text: "You repair turbines, generators, or control units. We recommend companies from this network to bid the work our customers need.",
+    cta: "Ask to join",
+  },
+] as const;
+
 export const interests = [
-  "I need a turbine",
-  "I have a used unit",
-  "I repair turbines or control units",
+  "I want to buy a turbine",
+  "I want to sell a turbine",
+  "I want to join the contractor network",
   "Technical verification",
   "Transaction support",
-  "Partnership",
   "Client portal access",
   "Something else",
 ] as const;

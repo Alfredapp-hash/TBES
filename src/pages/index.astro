@@ -1,7 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import { listings } from "../data/inventory";
-import { leaders } from "../data/site";
+import { leaders, reach } from "../data/site";
 
 const featuredIds = ["TB-S01", "TB-S05", "TB-S03"];
 const featured = featuredIds.flatMap((id) => {
@@ -47,7 +47,7 @@ const values = [
 
 <Base
   title="TBES · TurbineBridge Energy Solutions · Bridging power to possibilities"
-  description="TBES finds the turbine. If you need assistance, we connect the specialists. Some new systems are five years out."
+  description="TBES sits in the middle. Buy a turbine, sell one, or join the contractor network we recommend to bid the work."
 >
   <section class="hero-stage" aria-label="TurbineBridge">
     <img
@@ -65,10 +65,11 @@ const values = [
         <span class="legal">TBES · Energy Solutions LLC</span>
         <span class="tagline">Bridging power to possibilities</span>
       </h1>
-      <p class="lede">We find the turbine. If you need assistance, we connect the specialists. A used unit of any class, if it can be brought back online. Some new systems are five years out.</p>
+      <p class="lede">TBES sits in the middle. We find a turbine for a buyer, and we take a seller's machine to that buyer. If the unit needs work, we recommend contractors from our network to bid it.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="/solutions">Our solutions</a>
-        <a class="btn btn-ghost" href="/contact">Contact us</a>
+        {reach.map((item, index) => (
+          <a class={index === 0 ? "btn btn-primary" : "btn btn-ghost"} href={`/contact?interest=${encodeURIComponent(item.interest)}`}>{item.title}</a>
+        ))}
       </div>
     </div>
   </section>
@@ -87,8 +88,8 @@ const values = [
       </li>
       <li>
         <span>03</span>
-        <strong>We make the introduction</strong>
-        <em>The shops do the work. We are not the shop.</em>
+        <strong>Contractors bid</strong>
+        <em>We recommend our network. Those companies do the work.</em>
       </li>
       <li>
         <span>04</span>
@@ -102,21 +103,17 @@ const values = [
     <div class="section-inner">
       <div class="block-title">
         <p class="eyebrow">Start here</p>
-        <h2>Two ways in.</h2>
+        <h2>Three ways in.</h2>
       </div>
-      <div class="grid-2">
-        <a class="door card" href={`/contact?interest=${encodeURIComponent("I need a turbine")}`}>
-          <p class="eyebrow">Need power</p>
-          <h3>Find a turbine</h3>
-          <p>Tell us the load and the timing. Any class. We find the used unit. If you need assistance getting it online, say so.</p>
-          <span class="link">Start an inquiry</span>
-        </a>
-        <a class="door card" href={`/contact?interest=${encodeURIComponent("I repair turbines or control units")}`}>
-          <p class="eyebrow">You do the work</p>
-          <h3>You do the repair</h3>
-          <p>If your shop repairs gas turbines, or the control units that run them, tell us the classes you handle. We connect you with the customer who has the machine.</p>
-          <span class="link">Join the network</span>
-        </a>
+      <div class="grid-3">
+        {reach.map((item) => (
+          <a class="door card" href={`/contact?interest=${encodeURIComponent(item.interest)}`}>
+            <p class="eyebrow">{item.eyebrow}</p>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <span class="link">{item.cta}</span>
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -226,7 +223,7 @@ const values = [
             <h3>{item.name}</h3>
             <p class="spec-row">{item.outputLabel} · {item.condition} · {item.type}</p>
             <p>{item.summary}</p>
-            <a class="link" href={`/contact?interest=${encodeURIComponent("I need a turbine")}&listing=${item.id}`}>Ask about this configuration</a>
+            <a class="link" href={`/contact?interest=${encodeURIComponent("I want to buy a turbine")}&listing=${item.id}`}>Ask about this configuration</a>
           </article>
         ))}
       </div>
@@ -254,9 +251,13 @@ const values = [
   <section class="cta-band">
     <div class="cta-inner">
       <p class="eyebrow on-dark">Start a conversation</p>
-      <h2>Need a turbine, or do you repair them?</h2>
-      <p>If you need power, tell us the load. If you hold a used machine, or you are the specialist who can bring one back online, say so. Same desk either way.</p>
-      <a class="btn btn-primary" href="/contact">Contact us</a>
+      <h2>Buy, sell, or join the network.</h2>
+      <p>Same desk either way. Tell us which one you are.</p>
+      <div class="hero-actions">
+        {reach.map((item) => (
+          <a class="btn btn-ghost" href={`/contact?interest=${encodeURIComponent(item.interest)}`}>{item.title}</a>
+        ))}
+      </div>
     </div>
   </section>
 </Base>
