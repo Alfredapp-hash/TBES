@@ -7,11 +7,12 @@ $url = "https://lqqqiaatbctubptopbil.supabase.co"
 Write-Host "In Supabase, click the copy button on the secret key, then come back here." -ForegroundColor Cyan
 Read-Host "Press Enter once it's copied" | Out-Null
 
-$key = "$(Get-Clipboard)".Trim()
+# A copied key can arrive with a line break in the middle, which cuts it short if pasted into a prompt.
+$key = "$(Get-Clipboard)" -replace '\s', ''
+if ($key -notmatch '^sb_secret_[A-Za-z0-9_-]{20,}$') {
+    throw "The clipboard doesn't hold a whole secret key. Nothing was changed. Copy it again and rerun this."
+}
 try {
-    if ($key -notmatch '^sb_secret_[A-Za-z0-9_-]{20,}$') {
-        throw "The clipboard doesn't hold a whole secret key. Nothing was changed. Copy it again and rerun this."
-    }
     $headers = @{ apikey = $key; Authorization = "Bearer $key" }
     try {
         Invoke-RestMethod "$url/rest/v1/page_views?select=id&limit=1" -Headers $headers | Out-Null
