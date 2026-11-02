@@ -161,7 +161,9 @@ async function attempt(step: () => Promise<void>) {
   try {
     await step();
   } catch (error) {
-    say(error instanceof Error ? error.message : "Something went wrong. Please try again.", "error");
+    // Browsers report an unreachable server as a TypeError such as "Failed to fetch".
+    if (error instanceof TypeError) say("Couldn't reach the sign-in service. Check your connection and try again.", "error");
+    else say(error instanceof Error ? error.message : "Something went wrong. Please try again.", "error");
   }
 }
 
