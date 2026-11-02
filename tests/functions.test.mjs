@@ -51,3 +51,11 @@ test("insert fails loudly when unconfigured or rejected, without echoing content
   await assert.rejects(insert("inquiries", { message: "private" }, { env, fetcher: async () => ({ ok: false, status: 401 }) }),
     (error) => /status 401/.test(error.message) && !error.message.includes("private"));
 });
+
+test("the address from Netlify's Supabase connection works, and plain http is refused", async () => {
+  let url;
+  const key = { SUPABASE_SERVICE_ROLE_KEY: "fixture-key" };
+  await insert("page_views", {}, { env: { ...key, SUPABASE_DATABASE_URL: "https://y.supabase.co" }, fetcher: async (u) => { url = u; return { ok: true }; } });
+  assert.equal(url, "https://y.supabase.co/rest/v1/page_views");
+  await assert.rejects(insert("page_views", {}, { env: { ...key, SUPABASE_DATABASE_URL: "http://y.supabase.co" } }), /https/);
+});

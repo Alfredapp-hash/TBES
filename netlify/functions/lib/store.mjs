@@ -41,9 +41,11 @@ export function pageViewRow(input) {
 
 /** Insert one row. Repeat deliveries of the same unique key are ignored. Throws without logging content. */
 export async function insert(table, row, { conflict, env = process.env, fetcher = fetch } = {}) {
-  const base = env.SUPABASE_URL;
+  // SUPABASE_DATABASE_URL is the name Netlify's Supabase connection uses for the project's https address.
+  const base = env.SUPABASE_URL || env.SUPABASE_DATABASE_URL;
   const key = env.SUPABASE_SERVICE_ROLE_KEY;
   if (!base || !key) throw new Error("Supabase is not configured");
+  if (!base.startsWith("https://")) throw new Error("Supabase address must be https");
   const query = conflict ? `?on_conflict=${encodeURIComponent(conflict)}` : "";
   const response = await fetcher(`${base}/rest/v1/${table}${query}`, {
     method: "POST",
