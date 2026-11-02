@@ -73,3 +73,13 @@ test("traffic totals fill empty days and rank pages and referring sites", () => 
   assert.deepEqual(summary.topPaths[0], { label: "/", views: 4 });
   assert.deepEqual(summary.topReferrers, [{ label: "www.google.com", views: 3 }]);
 });
+
+test("the page-view function only takes same-site POSTs", async () => {
+  const { handler } = await import("../netlify/functions/page-view.mjs");
+  process.env.URL = "https://site.example";
+  const post = (origin) => handler({ httpMethod: "POST", body: "not json", headers: { origin } });
+  assert.equal((await handler({ httpMethod: "GET" })).statusCode, 405);
+  assert.equal((await post("https://evil.example")).statusCode, 403);
+  assert.equal((await post("https://site.example")).statusCode, 400);
+  delete process.env.URL;
+});
