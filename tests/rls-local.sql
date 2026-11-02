@@ -7,8 +7,10 @@ create schema auth;
 create table auth.users (id uuid primary key);
 create function auth.uid() returns uuid language sql stable as
   $$ select nullif(current_setting('request.uid', true), '')::uuid $$;
+create function auth.jwt() returns jsonb language sql stable as
+  $$ select jsonb_build_object('aal', current_setting('request.aal', true)) $$;
 grant usage on schema auth to anon, authenticated, service_role;
-grant execute on function auth.uid() to anon, authenticated, service_role;
+grant execute on function auth.uid(), auth.jwt() to anon, authenticated, service_role;
 grant usage on schema public to anon, authenticated, service_role;
 -- Supabase gives these roles broad table grants by default; the migration has to undo them.
 alter default privileges in schema public grant all on tables to anon, authenticated, service_role;
@@ -46,6 +48,7 @@ begin
 end $$;
 
 begin;
+select set_config('request.aal', 'aal2', true);
 -- The public can't read, write, change, or delete anything.
 select expect_denied('anon', '', 'select * from public.inquiries');
 select expect_denied('anon', '', 'select * from public.page_views');
@@ -54,12 +57,28 @@ select expect_denied('anon', '', $q$insert into public.inquiries (netlify_submis
 select expect_denied('anon', '', $q$insert into public.page_views (path) values ('/x')$q$);
 select expect_denied('anon', '', 'delete from public.inquiries');
 select expect_denied('anon', '', 'select public.is_staff()');
+select expect_denied('anon', '', 'select * from public.traffic_summary(30)');
 
 -- A signed-in person who isn't staff sees nothing and can't make themselves staff.
 select expect_rows('authenticated', '00000000-0000-0000-0000-00000000000b', 'select * from public.inquiries', 0);
 select expect_rows('authenticated', '00000000-0000-0000-0000-00000000000b', 'select * from public.page_views', 0);
 select expect_rows('authenticated', '00000000-0000-0000-0000-00000000000b', 'select * from public.staff', 0);
 select expect_denied('authenticated', '00000000-0000-0000-0000-00000000000b', $q$insert into public.staff (user_id) values ('00000000-0000-0000-0000-00000000000b')$q$);
+
+-- Staff who signed in with a password but no authenticator code see nothing and change nothing.
+select set_config('request.aal', 'aal1', true);
+select expect_rows('authenticated', '00000000-0000-0000-0000-00000000000a', 'select * from public.inquiries', 0);
+select expect_rows('authenticated', '00000000-0000-0000-0000-00000000000a', 'select * from public.page_views', 0);
+select expect_rows('authenticated', '00000000-0000-0000-0000-00000000000a', 'select * from public.traffic_summary(30)', 0);
+select set_config('request.uid', '00000000-0000-0000-0000-00000000000a', true);
+set local role authenticated;
+update public.inquiries set status = 'spam';
+reset role;
+select expect_rows('service_role', '', $q$select * from public.inquiries where status = 'new'$q$, 1);
+select set_config('request.aal', 'aal2', true);
+
+select expect_rows('authenticated', '00000000-0000-0000-0000-00000000000b', 'select * from public.traffic_summary(30)', 0);
+select expect_rows('authenticated', '00000000-0000-0000-0000-00000000000a', 'select * from public.traffic_summary(30)', 1);
 
 -- Staff can read, and can change status only.
 select expect_rows('authenticated', '00000000-0000-0000-0000-00000000000a', 'select * from public.inquiries', 1);

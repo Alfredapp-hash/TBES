@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { inquiryRow, insert, pageViewRow } from "../netlify/functions/lib/store.mjs";
+import { summarizeTraffic } from "../src/admin/traffic.mjs";
 
 const payload = { id: "abc", form_name: "contact", data: { name: " Pat ", email: "pat@example.com", message: "Hello", phone: "" } };
 const env = { SUPABASE_URL: "https://x.supabase.co", SUPABASE_SERVICE_ROLE_KEY: "fixture-key" };
@@ -58,4 +59,17 @@ test("the address from Netlify's Supabase connection works, and plain http is re
   await insert("page_views", {}, { env: { ...key, SUPABASE_DATABASE_URL: "https://y.supabase.co" }, fetcher: async (u) => { url = u; return { ok: true }; } });
   assert.equal(url, "https://y.supabase.co/rest/v1/page_views");
   await assert.rejects(insert("page_views", {}, { env: { ...key, SUPABASE_DATABASE_URL: "http://y.supabase.co" } }), /https/);
+});
+
+test("traffic totals fill empty days and rank pages and referring sites", () => {
+  const rows = [
+    { day: "2026-11-01", path: "/", referrer_host: "www.google.com", views: "3" },
+    { day: "2026-11-02", path: "/", referrer_host: null, views: 1 },
+    { day: "2026-11-02", path: "/contact", referrer_host: null, views: 2 },
+  ];
+  const summary = summarizeTraffic(rows, 3, new Date("2026-11-02T12:00:00Z"));
+  assert.equal(summary.total, 6);
+  assert.deepEqual(summary.series.map((point) => point.views), [0, 3, 3]);
+  assert.deepEqual(summary.topPaths[0], { label: "/", views: 4 });
+  assert.deepEqual(summary.topReferrers, [{ label: "www.google.com", views: 3 }]);
 });

@@ -8,7 +8,7 @@ export const handler = async (event) => {
   if ((event.body?.length ?? 0) > MAX_BODY) return { statusCode: 413, body: "" };
   const site = process.env.URL;
   const origin = event.headers?.origin;
-  if (site && origin && origin !== site && origin !== process.env.DEPLOY_PRIME_URL) return { statusCode: 403, body: "" };
+  if (site && origin && ![site, process.env.DEPLOY_PRIME_URL, process.env.DEPLOY_URL].includes(origin)) return { statusCode: 403, body: "" };
   let input;
   try {
     input = JSON.parse(event.body);

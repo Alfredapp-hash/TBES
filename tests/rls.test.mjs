@@ -6,14 +6,14 @@ import { PGlite } from "@electric-sql/pglite";
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
 
-test("the public and non-staff can't reach data; staff read and change status only", async () => {
+test("the public and non-staff can't reach data; staff read and change status only, and only after MFA", async () => {
   const script = read("tests/rls-local.sql")
-    .replace("\\i /migration.sql", () => read("supabase/migrations/0001_inquiries_and_analytics.sql"))
+    .replace("\\i /migration.sql", () => read("supabase/migrations/0001_inquiries_and_analytics.sql") + read("supabase/migrations/0002_staff_mfa_and_traffic.sql"))
     .replace("\\echo RLS CHECKS PASSED", "");
   const db = new PGlite();
   const notices = [];
   await db.exec(script, { onNotice: (notice) => notices.push(notice.message) });
   await db.close();
-  assert.equal(notices.filter((message) => message.startsWith("denied as expected")).length, 11);
-  assert.equal(notices.filter((message) => message.startsWith("ok:")).length, 7);
+  assert.equal(notices.filter((message) => message.startsWith("denied as expected")).length, 12);
+  assert.equal(notices.filter((message) => message.startsWith("ok:")).length, 13);
 });
