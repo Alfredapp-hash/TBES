@@ -3,6 +3,6 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://turbinebridge.netlify.app",
-  integrations: [react(), sitemap()],
+  site: "https://turbinebridgeenergy.com",
+  integrations: [react(), sitemap({ filter: (page) => !page.includes("/admin") })],
 });

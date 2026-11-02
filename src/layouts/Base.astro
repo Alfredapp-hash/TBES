@@ -13,6 +13,7 @@ const { title, description } = Astro.props;
 const fullTitle = title.includes("TurbineBridge") ? title : `${title} · TurbineBridge`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const image = new URL("/hero.jpg", Astro.site);
+const countView = import.meta.env.PROD && !Astro.url.pathname.startsWith("/404");
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -76,5 +77,16 @@ const jsonLd = {
       <slot />
     </main>
     <Footer />
+    {countView && (
+      <script is:inline>
+        navigator.sendBeacon?.(
+          "/.netlify/functions/page-view",
+          new Blob(
+            [JSON.stringify({ path: location.pathname, referrer: document.referrer.startsWith(location.origin) ? "" : document.referrer })],
+            { type: "application/json" },
+          ),
+        );
+      </script>
+    )}
   </body>
 </html>

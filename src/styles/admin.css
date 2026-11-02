@@ -1,0 +1,27 @@
+.admin-main { max-width: 1040px; margin: 0 auto; padding: 24px 16px 64px; }
+.admin-head, .admin-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.admin h1 { font-size: 1.6rem; margin: 0; }
+.admin h2 { font-size: 1.2rem; margin: 0; }
+.admin h3 { font-size: 1rem; margin: 16px 0 8px; }
+.admin [hidden] { display: none; }
+.admin-notice:empty { display: none; }
+.admin-notice[data-kind="error"] { color: #a32020; font-weight: 600; }
+.admin-card { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 20px; margin-top: 16px; }
+.admin-card label { display: block; font-weight: 600; margin-top: 12px; }
+.admin-row label { margin-top: 0; }
+.admin input, .admin select { display: block; width: 100%; max-width: 340px; padding: 10px; min-height: 44px; border: 1px solid #7d93a3; border-radius: 8px; font: inherit; background: #fff; color: var(--text); }
+.admin button { min-height: 44px; padding: 8px 18px; border: 0; border-radius: 8px; background: var(--bridge-deep); color: #fff; font: inherit; font-weight: 600; cursor: pointer; margin-top: 16px; }
+.admin-head button { margin-top: 0; }
+.admin button:disabled { opacity: 0.6; cursor: wait; }
+.admin :focus-visible { outline: 3px solid var(--bridge); outline-offset: 2px; }
+.admin-total { margin: 12px 0; }
+.admin-total strong { font-size: 2rem; }
+.admin-chart { display: flex; align-items: flex-end; gap: 2px; height: 120px; border-bottom: 1px solid var(--line); }
+.admin-chart span { flex: 1; min-width: 1px; background: var(--bridge); border-radius: 2px 2px 0 0; }
+.admin-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+.admin-list { margin: 0; padding: 0; list-style: none; }
+.admin-list li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
+.admin-inquiry { border-top: 1px solid var(--line); padding: 16px 0; }
+.admin-inquiry p { margin: 4px 0; overflow-wrap: anywhere; }
+.admin-inquiry .message { white-space: pre-wrap; margin: 8px 0; }
+.admin-meta { color: var(--muted); font-size: 0.92rem; }

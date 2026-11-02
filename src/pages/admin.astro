@@ -1,0 +1,84 @@
+---
+import "../styles/global.css";
+import "../styles/admin.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Desk admin · TurbineBridge</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class="admin">
+    <main class="admin-main">
+      <header class="admin-head">
+        <h1>Desk admin</h1>
+        <button id="sign-out" type="button" hidden>Sign out</button>
+      </header>
+      <p id="notice" class="admin-notice" role="status" aria-live="polite">Loading…</p>
+
+      <form id="sign-in" class="admin-card" hidden>
+        <h2>Sign in</h2>
+        <label>Email <input name="email" type="email" autocomplete="username" required /></label>
+        <label>Password <input name="password" type="password" autocomplete="current-password" required /></label>
+        <button type="submit">Continue</button>
+      </form>
+
+      <form id="mfa" class="admin-card" hidden>
+        <h2 id="mfa-title">Enter your authenticator code</h2>
+        <div id="enroll" hidden>
+          <p>Scan this with an authenticator app, then enter the code it shows.</p>
+          <img id="qr" alt="Authenticator setup code" width="180" height="180" />
+          <p>Can't scan it? Enter this key by hand: <code id="totp-key"></code></p>
+        </div>
+        <label>Six-digit code
+          <input name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required />
+        </label>
+        <button type="submit">Verify</button>
+      </form>
+
+      <div id="dashboard" hidden>
+        <section class="admin-card">
+          <div class="admin-row">
+            <h2>Traffic</h2>
+            <label>Period
+              <select id="days">
+                <option value="7">7 days</option>
+                <option value="30" selected>30 days</option>
+                <option value="90">90 days</option>
+              </select>
+            </label>
+          </div>
+          <p class="admin-total"><strong id="total">0</strong> page views</p>
+          <div id="chart" class="admin-chart" role="img"></div>
+          <div class="admin-columns">
+            <div><h3>Top pages</h3><ol id="top-paths" class="admin-list"></ol></div>
+            <div><h3>Top referring sites</h3><ol id="top-referrers" class="admin-list"></ol></div>
+          </div>
+        </section>
+
+        <section class="admin-card">
+          <div class="admin-row">
+            <h2>Inquiries</h2>
+            <label>Show
+              <select id="status-filter">
+                <option value="">All</option>
+                <option value="new" selected>New</option>
+                <option value="contacted">Contacted</option>
+                <option value="closed">Closed</option>
+                <option value="spam">Spam</option>
+              </select>
+            </label>
+          </div>
+          <p id="inquiries-empty" hidden>Nothing here.</p>
+          <div id="inquiries"></div>
+        </section>
+      </div>
+    </main>
+
+    <script src="../admin/admin.ts"></script>
+  </body>
+</html>
